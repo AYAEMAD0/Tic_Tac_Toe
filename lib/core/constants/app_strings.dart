@@ -1,6 +1,12 @@
 class AppStrings {
-  // Start game
+  //menu
+  static const String gameMode = 'Choose Game Mode';
+  static const String playFriend = 'Play with Friend';
+  static const String playAi = 'Play with Ai';
+
+
   static const String pickWhoFirst = 'Pick who goes first?';
+
 
   //Game
   static const String playerOne = 'Player 1';
