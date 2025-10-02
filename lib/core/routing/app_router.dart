@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/features/setup/friend_setup/presentation/view/friend_setup_view.dart';
 import '../../features/menu/presentation/view/menu_view.dart';
 import 'routes.dart';
 
@@ -7,6 +8,8 @@ class AppRouter {
     switch (settings.name) {
       case Routes.menuRouteName:
         return MaterialPageRoute(builder: (_) => MenuView());
+    case Routes.friendSetupRouteName:
+        return MaterialPageRoute(builder: (_) => FriendSetupView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
