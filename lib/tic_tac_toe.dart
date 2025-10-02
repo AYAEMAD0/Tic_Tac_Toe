@@ -17,7 +17,7 @@ class TicTacToe extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute:
-               Routes.friendSetupRouteName,
+               Routes.menuRouteName,
           onGenerateRoute: appRouter.generateRoute,
         );
       },

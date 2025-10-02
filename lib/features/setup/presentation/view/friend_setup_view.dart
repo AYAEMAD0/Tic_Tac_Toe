@@ -33,6 +33,16 @@ class _FriendSetupViewState extends State<FriendSetupView> {
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
+              extendBodyBehindAppBar: true,
+              appBar: AppBar(
+                backgroundColor: AppColors.transparent,
+                iconTheme: IconThemeData(color: AppColors.white),
+                title: Text(
+                  AppStrings.setupFriend,
+                  style: TextStyles.font22WhiteBold,
+                ),
+                centerTitle: true,
+              ),
               body: Stack(
                 children: [
                   //background
@@ -44,7 +54,7 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 12.w,
-                      vertical: 16.h,
+                      vertical: 18.h,
                     ),
                     child: SafeArea(
                       child: SingleChildScrollView(
@@ -53,15 +63,6 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              //title
-                              Center(
-                                child: Text(
-                                  AppStrings.setupFriend,
-                                  style: TextStyles.font24WhiteBold,
-                                ),
-                              ),
-                              SizedBox(height: 30.h),
-
                               // Friend Form
                               FriendSetupForm(
                                 controllerPLayerOne: cubit.playerOneController,

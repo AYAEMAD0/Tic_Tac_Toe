@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/features/setup/friend_setup/presentation/view/friend_setup_view.dart';
 import '../../features/menu/presentation/view/menu_view.dart';
+import '../../features/setup/presentation/view/friend_setup_view.dart';
 import 'routes.dart';
 
 class AppRouter {

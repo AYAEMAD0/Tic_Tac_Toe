@@ -48,7 +48,7 @@ class _ChooseShapeForPlayerState extends State<ChooseShapeForPlayer> {
                 if (value != null) _selectSymbol(value);
               },
             ),
-            Text(AppStrings.playerX, style: TextStyles.font24WhiteBold),
+            Text(AppStrings.playerX, style: TextStyles.font22WhiteBold),
             SizedBox(width: 40.w),
             Radio<String>(
               value: AppStrings.playerO,
@@ -58,7 +58,7 @@ class _ChooseShapeForPlayerState extends State<ChooseShapeForPlayer> {
                 if (value != null) _selectSymbol(value);
               },
             ),
-            Text(AppStrings.playerO, style: TextStyles.font24WhiteBold),
+            Text(AppStrings.playerO, style: TextStyles.font22WhiteBold),
           ],
         ),
       ],

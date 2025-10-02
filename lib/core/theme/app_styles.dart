@@ -5,8 +5,8 @@ import 'app_colors.dart';
 import 'font_weight_helper.dart';
 
 class TextStyles {
-  static TextStyle font24WhiteBold = GoogleFonts.montserrat(
-    fontSize: 24.sp,
+  static TextStyle font22WhiteBold = GoogleFonts.montserrat(
+    fontSize: 22.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
