@@ -5,8 +5,8 @@ import 'app_colors.dart';
 import 'font_weight_helper.dart';
 
 class TextStyles {
-  static TextStyle font24WhiteBold = GoogleFonts.montserrat(
-    fontSize: 24.sp,
+  static TextStyle font22WhiteBold = GoogleFonts.montserrat(
+    fontSize: 22.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
   );
@@ -14,6 +14,31 @@ class TextStyles {
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.black,
+  );
+  static TextStyle font20WhiteBold = GoogleFonts.montserrat(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.white,
+  );
+  static TextStyle font18GraySemiBold = GoogleFonts.montserrat(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.hintTextFieldColor,
+  );
+  static TextStyle font20WhiteSemiBold = GoogleFonts.montserrat(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.white,
+  );
+  static TextStyle font24DarkBlueBold = GoogleFonts.montserrat(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.darkBlue,
+  );
+  static TextStyle font14RedMedium = GoogleFonts.montserrat(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.red,
   );
 
 }

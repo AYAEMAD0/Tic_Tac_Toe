@@ -26,7 +26,7 @@ class MenuView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(AppStrings.gameMode, style: TextStyles.font24WhiteBold),
+                Text(AppStrings.gameMode, style: TextStyles.font22WhiteBold),
                 SizedBox(height: 17.h),
                 Row(
                   spacing: 12.w,
