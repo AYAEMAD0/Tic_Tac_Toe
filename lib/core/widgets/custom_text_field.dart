@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
   final bool? obscure;
   final String? obscureCharacter;
   final Function(String)? onChanged;
-
+  final bool? isAi;
   const CustomTextField({
     super.key,
     required this.textStyle,
@@ -41,6 +41,7 @@ class CustomTextField extends StatelessWidget {
     this.obscure=false,
     this.obscureCharacter,
     this.onChanged,
+    this.isAi,
   });
 
   @override
@@ -51,6 +52,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       autofocus: false,
+      readOnly: isAi??false,
       obscureText: obscure!,
       obscuringCharacter:obscureCharacter??"*" ,
       maxLines: maxLines,

@@ -1,6 +1,6 @@
-part of 'friend_setup_cubit.dart';
+part of 'setup_cubit.dart';
 
-class FriendSetupState {
+class SetupState {
   final String playerOneName;
   final String playerTwoName;
   final String firstPlayer;
@@ -9,7 +9,7 @@ class FriendSetupState {
   final bool randomClicked;
   final String symbol;
 
-  FriendSetupState({
+  SetupState({
     required this.playerOneName,
     required this.playerTwoName,
     required this.firstPlayer,
@@ -19,7 +19,7 @@ class FriendSetupState {
     this.symbol = 'X',
   });
 
-  FriendSetupState copyWith({
+  SetupState copyWith({
     String? playerOneName,
     String? playerTwoName,
     String? firstPlayer,
@@ -28,7 +28,7 @@ class FriendSetupState {
     bool? randomClicked,
     String? symbol,
   }) {
-    return FriendSetupState(
+    return SetupState(
       playerOneName: playerOneName ?? this.playerOneName,
       playerTwoName: playerTwoName ?? this.playerTwoName,
       firstPlayer: firstPlayer ?? this.firstPlayer,
@@ -40,8 +40,8 @@ class FriendSetupState {
   }
 }
 
-class FriendSetupInitial extends FriendSetupState {
-  FriendSetupInitial()
+class SetupInitial extends SetupState {
+  SetupInitial()
       : super(
     playerOneName: '',
     playerTwoName: '',

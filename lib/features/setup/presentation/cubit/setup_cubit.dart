@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-part 'friend_setup_state.dart';
+part 'setup_state.dart';
 
-class FriendSetupCubit extends Cubit<FriendSetupState> {
-  FriendSetupCubit() : super(FriendSetupInitial());
+class SetupCubit extends Cubit<SetupState> {
+  final bool isAi;
+  SetupCubit({this.isAi = false}) : super(SetupInitial()) {
+    if (isAi) {
+      playerTwoController.text = "Computer";
+      emit(state.copyWith(playerTwoName: "Computer"));
+    }
+  }
 
   final playerOneController = TextEditingController();
   final playerTwoController = TextEditingController();
@@ -12,7 +18,9 @@ class FriendSetupCubit extends Cubit<FriendSetupState> {
     if (playerNumber == 1) {
       emit(state.copyWith(playerOneName: name));
     } else {
-      emit(state.copyWith(playerTwoName: name));
+      if (!isAi) {
+        emit(state.copyWith(playerTwoName: name));
+      }
     }
   }
 
@@ -34,7 +42,13 @@ class FriendSetupCubit extends Cubit<FriendSetupState> {
     }
 
     final first = (DateTime.now().microsecond % 2 == 0) ? p1 : p2;
-    emit(state.copyWith(firstPlayer: first, randomClicked: true, showNameError: false));
+    emit(
+      state.copyWith(
+        firstPlayer: first,
+        randomClicked: true,
+        showNameError: false,
+      ),
+    );
   }
 
   void startGame() {
@@ -50,13 +64,15 @@ class FriendSetupCubit extends Cubit<FriendSetupState> {
     final chosenFirst = state.firstPlayer.isNotEmpty ? state.firstPlayer : p1;
     final chosenSymbol = state.symbol.isNotEmpty ? state.symbol : 'X';
 
-    emit(state.copyWith(
-      playerOneName: p1,
-      playerTwoName: p2,
-      rounds: chosenRounds,
-      firstPlayer: chosenFirst,
-      symbol: chosenSymbol,
-      showNameError: false,
-    ));
+    emit(
+      state.copyWith(
+        playerOneName: p1,
+        playerTwoName: isAi ? "Computer" : p2,
+        rounds: chosenRounds,
+        firstPlayer: chosenFirst,
+        symbol: chosenSymbol,
+        showNameError: false,
+      ),
+    );
   }
 }

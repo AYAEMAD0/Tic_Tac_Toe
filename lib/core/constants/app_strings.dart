@@ -24,6 +24,10 @@ class AppStrings {
   static const String startGame = "🚀 Start Game";
 
 
+  //ai
+  static const String setupAi = 'Setup Game with Ai';
+  static const String ai = 'Computer';
+
   //Game
   static const String playerOneTurn = 'Player 1’s Turn';
   static const String playerTwoTurn = 'Player 2’s Turn';

@@ -2,31 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../../core/constants/app_strings.dart';
-import '../../../../../core/constants/app_asset.dart';
-import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/theme/app_styles.dart';
+import '../../../../core/constants/app_asset.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_styles.dart';
 import '../cubit/setup_cubit.dart';
 import '../widget/custom_drop_down.dart';
-import '../widget/setup_form.dart';
 import '../widget/random_button.dart';
+import '../widget/setup_form.dart';
 import '../widget/show_first_player_and_symbol.dart';
 import '../widget/start_game_button.dart';
 
-class FriendSetupView extends StatefulWidget {
-  const FriendSetupView({super.key});
+class AiSetupView extends StatefulWidget {
+  const AiSetupView({super.key});
 
   @override
-  State<FriendSetupView> createState() => _FriendSetupViewState();
+  State<AiSetupView> createState() => _AiSetupViewState();
 }
 
-class _FriendSetupViewState extends State<FriendSetupView> {
+class _AiSetupViewState extends State<AiSetupView> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SetupCubit(),
+      create: (_) => SetupCubit(isAi: true),
       child: BlocBuilder<SetupCubit, SetupState>(
         builder: (context, state) {
           final cubit = context.read<SetupCubit>();
@@ -38,7 +38,7 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                 backgroundColor: AppColors.transparent,
                 iconTheme: IconThemeData(color: AppColors.white),
                 title: Text(
-                  AppStrings.setupFriend,
+                  AppStrings.setupAi,
                   style: TextStyles.font22WhiteBold,
                 ),
                 centerTitle: true,
@@ -63,10 +63,11 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              // Friend Form
+                              // Ai Form
                               SetupForm(
                                 controllerPLayerOne: cubit.playerOneController,
                                 controllerPLayerTwo: cubit.playerTwoController,
+                                isAi: true,
                                 onChangedOne: (value) =>
                                     cubit.setPlayerName(1, value),
                                 onChangedTwo: (value) =>
