@@ -34,4 +34,16 @@ class AppStrings {
   static const String win = "Wins!";
   static const String gameFinished = "Game Finished!";
 
+  //score
+  static const String gameOver = "Game Over";
+  static const String messageLose = "Don’t give up 💪";
+  static const String messageWin = "Congratulations 🏆";
+  static const String messageNoPlayerWin= "No winner this time 🤝";
+  static const String playAgain = "Play Again";
+  static const String mainMenu = "Main Menu";
+  static const String score = "Score: ";
+  static const String round = "Round: ";
+  static const String won = "Won 🎉";
+
+
 }

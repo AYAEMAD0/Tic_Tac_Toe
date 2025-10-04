@@ -13,6 +13,7 @@ class AppAsset{
   //score
   static const sadBoy='assets/images/animations/sadBoy.json';
   static const happyBoy='assets/images/animations/happyBoy.json';
+  static const handshake='assets/images/animations/Handshake.json';
 
 
 

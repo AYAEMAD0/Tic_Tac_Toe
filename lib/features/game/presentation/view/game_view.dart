@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tic_tac_toe/core/routing/routes.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_styles.dart';
@@ -24,6 +25,16 @@ class GameView extends StatelessWidget {
         listener: (context, state) {
           if (state.message == AppStrings.gameFinished) {
             //todo nav into score
+            final updatedPlayer = player.copyWith(
+              firstPlayerScore: state.player1Score,
+              secondPlayerScore: state.player2Score,
+              winner: state.player1Score > state.player2Score
+                  ? "first"
+                  : state.player1Score < state.player2Score
+                  ? "second"
+                  : "draw",
+            );
+            Navigator.pushNamedAndRemoveUntil(context, Routes.scoreRouteName,(route) => false,arguments: updatedPlayer);
           }
         },
         builder: (context, state) {
@@ -54,7 +65,7 @@ class GameView extends StatelessWidget {
                       SizedBox(height: 10.h),
                       Text(
                         gameState.message,
-                        style: TextStyles.font26WhiteSemiBold,
+                        style: TextStyles.font26WhiteBold,
                       ),
                       SizedBox(height: 20.h),
                       Expanded(
