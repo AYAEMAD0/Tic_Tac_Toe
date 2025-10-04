@@ -15,11 +15,14 @@ class ShowFirstPlayerAndSymbol extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "$textFirstPlayer 🎉",
-          style: TextStyles.font20WhiteSemiBold,
-          textAlign: TextAlign.center,
+        Center(
+          child: Text(
+            "$textFirstPlayer 🎉",
+            style: TextStyles.font20WhiteSemiBold,
+            textAlign: TextAlign.center,
+          ),
         ),
         SizedBox(height: 20.h),
         Text(AppStrings.pickSymbol, style: TextStyles.font20WhiteSemiBold),

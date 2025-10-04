@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/constants/app_strings.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_styles.dart';
 
-
 class ChooseShapeForPlayer extends StatefulWidget {
   const ChooseShapeForPlayer({
     super.key,
-    required this.textFirst,
+    this.textFirst,
     required this.onSymbolSelected,
+    this.controller,
   });
 
-  final String textFirst;
+  final String? textFirst;
   final void Function(String) onSymbolSelected;
-
+  final TextEditingController? controller;
   @override
   State<ChooseShapeForPlayer> createState() => _ChooseShapeForPlayerState();
 }
@@ -27,7 +26,9 @@ class _ChooseShapeForPlayerState extends State<ChooseShapeForPlayer> {
   void _selectSymbol(String symbol) {
     setState(() {
       playerOneSymbol = symbol;
-      playerTwoSymbol = (symbol == AppStrings.playerX) ? AppStrings.playerO : AppStrings.playerX;
+      playerTwoSymbol = (symbol == AppStrings.playerX)
+          ? AppStrings.playerO
+          : AppStrings.playerX;
     });
     widget.onSymbolSelected(symbol);
   }
@@ -36,7 +37,24 @@ class _ChooseShapeForPlayerState extends State<ChooseShapeForPlayer> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(widget.textFirst, style: TextStyles.font20WhiteBold),
+        widget.textFirst != null
+            ? Text(
+                "${widget.textFirst} :",
+                style: TextStyles.font20WhiteBold,
+                overflow: TextOverflow.ellipsis,
+              )
+            : ValueListenableBuilder<TextEditingValue>(
+                valueListenable: widget.controller!,
+                builder: (context, value, _) {
+                  final name = value.text.trim();
+                  return Text(
+                    name.isNotEmpty ? "$name :" : "${AppStrings.playerOne} :",
+                    style: TextStyles.font20WhiteBold,
+                    overflow: TextOverflow.ellipsis,
+                  );
+                },
+              ),
+
         SizedBox(width: 10.w),
         Row(
           children: [

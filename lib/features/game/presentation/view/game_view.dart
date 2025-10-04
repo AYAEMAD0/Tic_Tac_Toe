@@ -19,7 +19,7 @@ class GameView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GameCubit(player),
+      create: (context) => GameCubit(player,isAI: player.isAi),
       child: BlocConsumer<GameCubit, GameState>(
         listener: (context, state) {
           if (state.message == AppStrings.gameFinished) {

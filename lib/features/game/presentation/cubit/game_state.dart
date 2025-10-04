@@ -6,6 +6,7 @@ class GameState {
   final int player1Score;
   final int player2Score;
   final String message;
+  final String winner;
 
   GameState({
     required this.board,
@@ -13,6 +14,7 @@ class GameState {
     required this.player1Score,
     required this.player2Score,
     required this.message,
+    this.winner = "",
   });
 
   GameState copyWith({
@@ -21,6 +23,7 @@ class GameState {
     int? player1Score,
     int? player2Score,
     String? message,
+    String? winner,
   }) {
     return GameState(
       board: board ?? this.board,
@@ -28,6 +31,7 @@ class GameState {
       player1Score: player1Score ?? this.player1Score,
       player2Score: player2Score ?? this.player2Score,
       message: message ?? this.message,
+      winner: winner ?? this.winner,
     );
   }
 }
