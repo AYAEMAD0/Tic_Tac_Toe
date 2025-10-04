@@ -31,6 +31,8 @@ class SetupCubit extends Cubit<SetupState> {
   void setSymbol(String symbol) {
     emit(state.copyWith(symbol: symbol));
   }
+  String get secondPlayerSymbol => state.symbol == 'X' ? 'O' : 'X';
+  String get secondPlayerGame => state.firstPlayer == playerOneController.text ? playerTwoController.text : playerOneController.text;
 
   void pickRandomFirstPlayer() {
     final p1 = playerOneController.text.trim();
@@ -61,7 +63,9 @@ class SetupCubit extends Cubit<SetupState> {
     }
 
     final chosenRounds = state.rounds;
-    final chosenFirst = state.firstPlayer.isNotEmpty ? state.firstPlayer : p1;
+    final chosenFirst = (state.firstPlayer != null && state.firstPlayer!.isNotEmpty)
+        ? state.firstPlayer
+        : p1;
     final chosenSymbol = state.symbol.isNotEmpty ? state.symbol : 'X';
 
     emit(

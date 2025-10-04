@@ -3,7 +3,7 @@ part of 'setup_cubit.dart';
 class SetupState {
   final String playerOneName;
   final String playerTwoName;
-  final String firstPlayer;
+  final String? firstPlayer;
   final int rounds;
   final bool showNameError;
   final bool randomClicked;
@@ -12,10 +12,10 @@ class SetupState {
   SetupState({
     required this.playerOneName,
     required this.playerTwoName,
-    required this.firstPlayer,
     required this.rounds,
     this.showNameError = false,
     this.randomClicked = false,
+    this.firstPlayer,
     this.symbol = 'X',
   });
 
@@ -31,7 +31,7 @@ class SetupState {
     return SetupState(
       playerOneName: playerOneName ?? this.playerOneName,
       playerTwoName: playerTwoName ?? this.playerTwoName,
-      firstPlayer: firstPlayer ?? this.firstPlayer,
+      firstPlayer: firstPlayer ?? this.playerOneName,
       rounds: rounds ?? this.rounds,
       showNameError: showNameError ?? this.showNameError,
       randomClicked: randomClicked ?? this.randomClicked,
@@ -42,11 +42,11 @@ class SetupState {
 
 class SetupInitial extends SetupState {
   SetupInitial()
-      : super(
-    playerOneName: '',
-    playerTwoName: '',
-    firstPlayer: '',
-    rounds: 3,
-    symbol: 'X',
-  );
+    : super(
+        playerOneName: '',
+        playerTwoName: '',
+        firstPlayer: '',
+        rounds: 3,
+        symbol: 'X',
+      );
 }

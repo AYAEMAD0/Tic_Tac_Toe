@@ -7,11 +7,12 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_styles.dart';
 import '../cubit/setup_cubit.dart';
+import '../widget/choose_shape_for_player.dart';
 import '../widget/custom_drop_down.dart';
-import '../widget/random_button.dart';
 import '../widget/setup_form.dart';
-import '../widget/show_first_player_and_symbol.dart';
 import '../widget/start_game_button.dart';
+import '../../data/model/player_model.dart';
+import 'package:tic_tac_toe/core/routing/routes.dart';
 
 class AiSetupView extends StatefulWidget {
   const AiSetupView({super.key});
@@ -96,37 +97,11 @@ class _AiSetupViewState extends State<AiSetupView> {
                                 },
                               ),
 
-                              SizedBox(height: 25.h),
-                              // Pick who plays first
-                              Text(
-                                AppStrings.pickWhoFirst,
-                                style: TextStyles.font20WhiteBold,
-                              ),
-                              SizedBox(height: 8.h),
-                              RandomButton(
-                                onPressed: () {
-                                  cubit.pickRandomFirstPlayer();
-                                },
-                                borderColor: state.showNameError
-                                    ? AppColors.red
-                                    : AppColors.transparent,
-                              ),
-
-                              if (state.showNameError)
-                                Padding(
-                                  padding: EdgeInsets.only(top: 8.h,left: 25.w),
-                                  child: Text(
-                                    AppStrings.nameRequired,
-                                    style: TextStyles.font14RedMedium,
-                                  ),
-                                ),
-
                               SizedBox(height: 5.h),
-                              if (state.randomClicked)
-                                ShowFirstPlayerAndSymbol(
-                                  textFirstPlayer: state.firstPlayer,
-                                  onSymbolSelected: cubit.setSymbol,
-                                ),
+                              ChooseShapeForPlayer(
+                                controller: cubit.playerOneController,
+                                onSymbolSelected: cubit.setSymbol,
+                              ),
                             ],
                           ),
                         ),
@@ -138,9 +113,27 @@ class _AiSetupViewState extends State<AiSetupView> {
                   StartGameButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        cubit.startGame();
-                        //todo nav into game
+                        cubit.setPlayerName(1, cubit.playerOneController.text);
+                        cubit.setSymbol(
+                          cubit.state.symbol.isEmpty
+                              ? AppStrings.playerX
+                              : cubit.state.symbol,
+                        );
 
+                        cubit.startGame();
+
+                        Navigator.pushReplacementNamed(
+                          context,
+                          Routes.gameRouteName,
+                          arguments: PlayerModel(
+                            firstPlayerName: cubit.playerOneController.text,
+                            secondPlayerName: cubit.secondPlayerGame,
+                            firstPlayerSymbol: cubit.state.symbol,
+                            secondPlayerSymbol: cubit.secondPlayerSymbol,
+                            rounds: cubit.state.rounds,
+                            isAi: true,
+                          ),
+                        );
                       }
                     },
                   ),
