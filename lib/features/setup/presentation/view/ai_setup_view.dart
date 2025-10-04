@@ -124,7 +124,7 @@ class _AiSetupViewState extends State<AiSetupView> {
                               SizedBox(height: 5.h),
                               if (state.randomClicked)
                                 ShowFirstPlayerAndSymbol(
-                                  textFirstPlayer: state.firstPlayer,
+                                  textFirstPlayer: state.firstPlayer!,
                                   onSymbolSelected: cubit.setSymbol,
                                 ),
                             ],

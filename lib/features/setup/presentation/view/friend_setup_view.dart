@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tic_tac_toe/core/routing/routes.dart';
 import '../../../../../core/constants/app_strings.dart';
 import '../../../../../core/constants/app_asset.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_styles.dart';
+import '../../data/model/player_model.dart';
 import '../cubit/setup_cubit.dart';
 import '../widget/custom_drop_down.dart';
 import '../widget/setup_form.dart';
@@ -113,7 +115,10 @@ class _FriendSetupViewState extends State<FriendSetupView> {
 
                               if (state.showNameError)
                                 Padding(
-                                  padding: EdgeInsets.only(top: 8.h,left: 25.w),
+                                  padding: EdgeInsets.only(
+                                    top: 8.h,
+                                    left: 25.w,
+                                  ),
                                   child: Text(
                                     AppStrings.nameRequired,
                                     style: TextStyles.font14RedMedium,
@@ -123,7 +128,7 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                               SizedBox(height: 5.h),
                               if (state.randomClicked)
                                 ShowFirstPlayerAndSymbol(
-                                  textFirstPlayer: state.firstPlayer,
+                                  textFirstPlayer: state.firstPlayer!,
                                   onSymbolSelected: cubit.setSymbol,
                                 ),
                             ],
@@ -139,7 +144,17 @@ class _FriendSetupViewState extends State<FriendSetupView> {
                       if (formKey.currentState!.validate()) {
                         cubit.startGame();
                         //todo nav into game
-
+                        Navigator.pushReplacementNamed(
+                          context,
+                          Routes.gameRouteName,
+                          arguments: PlayerModel(
+                            firstPlayerName: state.firstPlayer ?? state.playerOneName,
+                            secondPlayerName: cubit.secondPlayerGame,
+                            firstPlayerSymbol: state.symbol,
+                            secondPlayerSymbol: cubit.secondPlayerSymbol,
+                            rounds: state.rounds,
+                          ),
+                        );
                       }
                     },
                   ),

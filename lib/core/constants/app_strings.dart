@@ -29,12 +29,9 @@ class AppStrings {
   static const String ai = 'Computer';
 
   //Game
-  static const String playerOneTurn = 'Player 1’s Turn';
-  static const String playerTwoTurn = 'Player 2’s Turn';
-
-  static const String playerOneWin = 'Player 1’s win';
-  static const String playerTwoWin = 'Player 2’s win';
-
   static const String nonePlayersWin = 'None of Players win';
+  static const String turn = "'s Turn";
+  static const String win = "Wins!";
+  static const String gameFinished = "Game Finished!";
 
 }
