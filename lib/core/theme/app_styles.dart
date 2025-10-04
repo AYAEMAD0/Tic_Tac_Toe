@@ -40,7 +40,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColors.red,
   );
-  static TextStyle font26WhiteSemiBold = GoogleFonts.montserrat(
+  static TextStyle font26WhiteBold = GoogleFonts.montserrat(
     fontSize: 26.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.white,
@@ -49,5 +49,11 @@ class TextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.darkBlue,
+  );
+
+  static TextStyle font22WhiteSemiBold = GoogleFonts.montserrat(
+    fontSize: 22.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: AppColors.white,
   );
 }
